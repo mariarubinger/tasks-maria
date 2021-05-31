@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Form from "./components/Form";
+import ProjectList from "./components/ProjectList";
+import Board from "./components/Board";
+import './styles/global.css';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    const [projectId, setProjectId] = useState(''); 
+    const [nameProject, setNameProject] = useState('Selecione um projeto');
+    const [taskList, setTaskList] = useState([]);
+    const [newTask, setNewTask] = useState('');
+    
+    return (
+        <div>
+            <div className="header">
+              {nameProject}
+            </div>
+            <div className="flex">
+                <div className="sidebar">
+                    <Form />
+                    <ProjectList taskList={taskList} setProjectId={setProjectId} setTaskList={setTaskList} setNameProject={setNameProject} /> 
+                </div>
+                    <Board taskList={taskList} projectId={projectId} newTask={newTask} setNewTask={setNewTask} />
+            </div>
+            
+        </div>
   );
 }
 

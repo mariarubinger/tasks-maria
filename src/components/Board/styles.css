@@ -1,0 +1,39 @@
+.containerTasks{
+    background: rgb(255, 255, 255);
+    width: 100%;
+    display: flex;
+}
+
+.containerTasks .status{
+    padding: 5px;
+    background-color:  rgb(241, 241, 241);    
+    color:rgba(44, 43, 43, 0.966);
+    width: 100%;
+    margin: 15px 15px 0 15px;
+    border-radius: 5px;
+}
+
+.containerTasks .status h4{
+    text-align: center;
+    margin: 5px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    padding-bottom: 8px;
+    margin-bottom: 20px ;
+   
+}
+.containerTasks .status .task{
+margin: 10px;
+background-color: #fff;
+padding: 8px;
+border-radius: 6px;
+-webkit-box-shadow: 2px 4px 6px 0px #D1D1D1; 
+box-shadow: 2px 4px 6px 0px #D1D1D1;
+cursor: pointer;
+list-style-type: none;
+
+
+}
+.containerTasks .status .task:hover{
+    color: rgb(78, 147, 251);
+
+}

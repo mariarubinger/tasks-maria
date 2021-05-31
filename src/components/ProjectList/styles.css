@@ -1,0 +1,17 @@
+.projectList ul{
+    padding-left: 20px;
+  }
+  
+  .projectList ul li {
+    list-style-type: none;
+    border-bottom: 1px solid #999;
+    padding: 10px 0;  
+    cursor: pointer;
+    
+  }
+  
+  .projectList ul li:hover {
+    background-color: rgb(192, 192, 192);
+    color: rgb(78, 147, 251);
+    list-style-type: none;
+  }

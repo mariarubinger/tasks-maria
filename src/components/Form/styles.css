@@ -1,0 +1,35 @@
+.container-form {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding:10px 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+.input-form {
+  align-items: center;
+  background: #FFFF;
+  font-size: 16px;
+  padding: 2px 14px;
+  border-radius: 8px;
+  border: 0; 
+}
+
+.button-form {
+  padding: 8px;
+  text-align: center;
+  color: #FFFF;
+  background-color: #6B7280;
+  border-radius: 0.6rem;
+  outline: 0px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  margin-left: 4px;
+
+  }
+
+.button-form:hover {
+  opacity: .7;
+}
