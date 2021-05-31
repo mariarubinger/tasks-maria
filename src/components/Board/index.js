@@ -2,40 +2,57 @@ import React, { useState } from 'react';
 import * as FirestoreService from '../../services/firestore';
 import './styles.css';
 
-function Board({taskList,projectId,newTask, setNewTask}) {
+function Board({taskList,projectId,newTask,setNewTask,setTaskList}) {
+    const [error, setError] = useState();
+ 
+    function handleNewTask(e) {
+        let input = e.target.value;
+        setNewTask(input);
+    } 
 
-function handleNewTask(e) {
-    let input = e.target.value;
-    setNewTask(input); //atualiza o estado taskBoard através de setTaskBoard
-}
+    function addTask(e){    
+        if(!newTask) return;
+        e.preventDefault();   
+        FirestoreService.createTask(newTask, projectId);
 
-function addTask(e){   
-    if(!newTask) return; //se o input estiver vazio, não adiciona em branco
-    e.preventDefault(); //desabilita o refresh ao clicar no button   
-    let a = FirestoreService.createTask(newTask, projectId);
-    setNewTask(''); //limpa o input depois de adicionar novo quadro
-}
+        FirestoreService.getTasksByProject(projectId)
+        .then(tasks => {                      
+            let arrayTasks = [];
+            if (tasks) {             
+            setError(null);             
+            tasks.forEach((doc) => {      
+                arrayTasks.push(<li className="task" key={doc.id}>{doc.data().name}</li>);
+            });           
+            setTaskList(arrayTasks)                                     
+            } else {
+            setError('Lista de tarefas não encontrada');             
+            }
+        })
+        .catch(() => setError('Falha ao buscar lista de tarefas'));  
+
+        setNewTask(''); 
+    }
 
     return(
         <div className="containerTasks">            
             <div className="status">
                 <h4>TODO</h4>
-                 {taskList}
+                {taskList}
                 <div className="flex">
-                <input
-                    type="text"
-                    placeholder="Nova Tarefa"
-                    className="input-form"
-                    onChange={handleNewTask}
-                    value={newTask}
-                    />
-                <button
-                    type="submit"
-                    className="button-form"
-                    onClick={addTask}>
-                    ADICIONAR
-                </button>
-             </div>
+                    <input
+                        type="text"
+                        placeholder="Adicionar nova tarefa"
+                        className="input-form-task"
+                        onChange={handleNewTask}
+                        value={newTask}
+                        />
+                    <button
+                        type="submit"
+                        className="button-form-task"
+                        onClick={addTask}>
+                        +
+                    </button>
+                </div>
             </div>
             <div className="status">
                 <h4>DOING</h4>

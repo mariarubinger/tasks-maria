@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Form from "./components/Form";
 import ProjectList from "./components/ProjectList";
 import Board from "./components/Board";
-import './styles/global.css';
 import './App.css';
 
 function App() {
@@ -10,6 +9,7 @@ function App() {
     const [nameProject, setNameProject] = useState('Selecione um projeto');
     const [taskList, setTaskList] = useState([]);
     const [newTask, setNewTask] = useState('');
+    const [reloadProject, setReloadProject] = useState(false); 
     
     return (
         <div>
@@ -18,12 +18,23 @@ function App() {
             </div>
             <div className="flex">
                 <div className="sidebar">
-                    <Form />
-                    <ProjectList taskList={taskList} setProjectId={setProjectId} setTaskList={setTaskList} setNameProject={setNameProject} /> 
+                    <Form setReloadProject={setReloadProject}/>
+                    <ProjectList
+                        reloadProject={reloadProject}
+                        taskList={taskList}
+                        setProjectId={setProjectId}
+                        setTaskList={setTaskList}
+                        setNameProject={setNameProject}
+                    /> 
                 </div>
-                    <Board taskList={taskList} projectId={projectId} newTask={newTask} setNewTask={setNewTask} />
+                <Board
+                    setTaskList={setTaskList}
+                    taskList={taskList}
+                    projectId={projectId}
+                    newTask={newTask}
+                    setNewTask={setNewTask}
+                />
             </div>
-            
         </div>
   );
 }

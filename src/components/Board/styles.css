@@ -22,18 +22,42 @@
    
 }
 .containerTasks .status .task{
-margin: 10px;
-background-color: #fff;
-padding: 8px;
-border-radius: 6px;
--webkit-box-shadow: 2px 4px 6px 0px #D1D1D1; 
-box-shadow: 2px 4px 6px 0px #D1D1D1;
-cursor: pointer;
-list-style-type: none;
-
-
+    margin: 10px;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 6px;
+    -webkit-box-shadow: 2px 4px 6px 0px #D1D1D1; 
+    box-shadow: 2px 4px 6px 0px #D1D1D1;
+    cursor: pointer;
+    list-style-type: none;
 }
+
 .containerTasks .status .task:hover{
-    color: rgb(78, 147, 251);
-
+    color: #60A5FA;
 }
+
+.input-form-task {
+    align-items: center;
+    background: #FFFF;
+    font-size: 16px;
+    padding: 2px 14px;
+    border-radius: 8px;
+    border: 0; 
+    margin-left: 10px;
+  }
+  
+.button-form-task {
+    padding: 8px;
+    text-align: center;
+    color: #FFFF;
+    background-color: #6B7280;
+    border-radius: 0.6rem;
+    outline: 0px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    margin-left: 4px;
+    }
+  
+.button-form-task:hover {
+    opacity: .4;
+  }
